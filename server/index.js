@@ -3,6 +3,7 @@ import * as dotenv from 'dotenv';
 import cors from 'cors';
 
 import connectDB from './mongodb/connect.js';
+import AuthRoutes from './routes/auth.js';
 
 dotenv.config();
 
@@ -15,6 +16,8 @@ app.get('/', async (req, res) => {
 		message: 'Test',
 	});
 });
+
+app.use('/auth', AuthRoutes);
 
 const startServer = async () => {
 	try {
