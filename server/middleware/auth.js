@@ -10,10 +10,7 @@ export default asyncHandler(async (req, res, next) => {
     if (token) {
       decodedData = jwt.verify(token, process.env.JWT_SECRET);
       req.user = {
-        id: decodedData?.id,
         email: decodedData?.email,
-        fullName: decodedData?.fullName,
-        favorites: decodedData?.favorites || [],
       };
     } else {
       throw new Error('No token provided or invalid token');

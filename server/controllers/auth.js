@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import asyncHandler from 'express-async-handler';
 
-import User from '../mongodb/models/user.js';
+import User from '../mongodb/models/User.js';
 
 export const signup = asyncHandler(async (req, res, next) => {
   const {
@@ -76,7 +76,6 @@ export const signin = asyncHandler(async (req, res, next) => {
 
   const token = jwt.sign(
     {
-      id: existingUser._id,
       email: existingUser.email,
       firstName: existingUser.firstName,
       lastName: existingUser.lastName,
@@ -91,7 +90,6 @@ export const signin = asyncHandler(async (req, res, next) => {
     res.status(201).json({
       success: true,
       data: {
-        _id: existingUser._id,
         email: existingUser.email,
         firstName: existingUser.firstName,
         lastName: existingUser.lastName,

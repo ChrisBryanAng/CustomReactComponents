@@ -4,7 +4,7 @@ import cors from 'cors';
 
 import errorHandler from './middleware/errorHandler.js';
 import connectDB from './mongodb/connect.js';
-import AuthRoutes from './routes/auth.js';
+import authRoutes from './routes/auth.js';
 
 dotenv.config();
 
@@ -18,7 +18,7 @@ app.get('/', async (req, res) => {
   });
 });
 
-app.use('/auth', AuthRoutes);
+app.use('/auth', authRoutes);
 app.use(errorHandler);
 
 const startServer = async () => {
