@@ -88,14 +88,13 @@ export const signin = asyncHandler(async (req, res, next) => {
   );
 
   if (existingUser) {
-    const stringIds = existingUser.favoriteCars.map((id) => id.toString());
     res.status(201).json({
       success: true,
       data: {
         _id: existingUser._id,
-        fullName: existingUser.fullName,
         email: existingUser.email,
-        favorites: stringIds,
+        firstName: existingUser.firstName,
+        lastName: existingUser.lastName,
         token,
       },
     });
